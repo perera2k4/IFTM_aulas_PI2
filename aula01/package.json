@@ -1,0 +1,22 @@
+{
+  "name": "aula01",
+  "version": "1.0.0",
+  "description": "Primeira aula de PI 2 2025-08-07",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/perera2k4/IFTM_aulas_PI2.git"
+  },
+  "author": "Bruno Pereira",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/perera2k4/IFTM_aulas_PI2/issues"
+  },
+  "homepage": "https://github.com/perera2k4/IFTM_aulas_PI2#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
