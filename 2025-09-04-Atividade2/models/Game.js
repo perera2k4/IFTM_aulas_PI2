@@ -21,9 +21,11 @@ const gameSchema = new mongoose.Schema(
       minlength: [2, "'Plataforma' muito curto."],
       maxlength: [50, "'Plataforma' muito longo."],
     },
-    lancamento: {
-      type: Date,
-      min: [1958, "Ano de 'Lançamento' deve ser maior de 1958."],
+    ano_lancamento: {
+      type: Number,
+      required: [true, "Ano de 'Lançamento' é um campo obrigatório."],
+      min: [1900, "Ano de 'Lançamento' deve ser maior que 1900."],
+      max: [2100, "Ano de 'Lançamento' deve ser menor que 2100."],
     },
   },
   { versionKey: false }
