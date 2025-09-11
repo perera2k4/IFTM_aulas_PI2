@@ -2,7 +2,7 @@
 
 **Bruno Pereira Carvalho**
 
-Este repósitorio foi feito para entrega de atividade da disciplina de Programação para Internet 2, nas turmas de 8ºs e 6ºs período de Ciência da Computação, com objetivo de criar uma aplicação node.js que irá executar um servidor backend com integração ao mongodb para que usuários cadastrem, consultem, atualizem e removam informações de jogos, de forma organizada e segura por meio do CRUD.
+Este repósitorio foi feito para entrega de atividade da disciplina de Programação para Internet 2, nas turmas de 8ºs e 6ºs períodos de Ciência da Computação, com objetivo de criar uma aplicação node.js que irá executar um servidor backend com integração ao mongodb para que usuários cadastrem, consultem, atualizem e removam informações de jogos, de forma organizada e segura por meio do CRUD.
 
 ## 🔗 Métodos HTTP
 
@@ -14,11 +14,11 @@ Este repósitorio foi feito para entrega de atividade da disciplina de Programa�
 
 ![POST](https://img.shields.io/badge/POST-D3BE6F) http://localhost:3000/games/id, utilizado para adicionar um elemento ao banco de dados pela rota <strong>/games</strong>
 
-![PUT](https://img.shields.io/badge/PUT-71A9ED) http://localhost:3000/games/id, utilizado para editar um elemento ao banco de dados pela rota <strong>/games</strong>
+![PUT](https://img.shields.io/badge/PUT-71A9ED) http://localhost:3000/games/id, utilizado para editar um elemento do banco de dados pela rota <strong>/games</strong>
 
-![PATCH](https://img.shields.io/badge/PATCH-BBA3DB) http://localhost:3000/games/id, utilizado para editar um elemento ao banco de dados pela rota <strong>/games</strong>
+![PATCH](https://img.shields.io/badge/PATCH-BBA3DB) http://localhost:3000/games/id, utilizado para editar um elemento do banco de dados pela rota <strong>/games</strong>
 
-![DELETE](https://img.shields.io/badge/DELETE-D7887E) http://localhost:3000/games/id, utilizado para deletar um elemento ao banco de dados pela rota <strong>/games</strong>
+![DELETE](https://img.shields.io/badge/DELETE-D7887E) http://localhost:3000/games/id, utilizado para deletar um elemento do banco de dados pela rota <strong>/games</strong>
 
 </div>
 
@@ -79,25 +79,31 @@ node index.js
 ## 🤖 Middlewares Criados
 
 ### 1. **Middleware de Configuração**
+
 **`app.use(express.json())`**: é responsável por habilitar o parsing de JSON no corpo das requisições. Ele permite que a aplicação interprete e manipule dados enviados no formato JSON.
 
 ### 2. **Middleware de Rotas**
+
 **`app.use("/games", gamesRouter)`**: define o prefixo `/games` para todas as rotas relacionadas a jogos. As rotas específicas são gerenciadas no arquivo `games.routes.js`.
 
 ### 3. **Middleware de Tratamento de Erros**
+
 **`app.use((err, req, res, next) => { ... })`**: captura e trata erros que ocorrem na aplicação e inclui:
-  - **Erro de Cast (`CastError`)**: Retorna um status `400` com a mensagem "ID inválido".
-  - **Erro de Validação (`ValidationError`)**: Retorna um status `400` com detalhes sobre a falha de validação.
-  - **Erro Interno do Servidor**: Retorna um status `500` com uma mensagem genérica de erro.
+
+- **Erro de Cast (`CastError`)**: Retorna um status `400` com a mensagem "ID inválido".
+- **Erro de Validação (`ValidationError`)**: Retorna um status `400` com detalhes sobre a falha de validação.
+- **Erro Interno do Servidor**: Retorna um status `500` com uma mensagem genérica de erro.
 
 ## 🚫 Desafios
 
 ### 1. **Conexão com o MongoDB**
+
 **Desafio**: Configurar a conexão com o MongoDB de forma segura e reutilizável.
 
 **Solução**: Foi criado um arquivo separado (`controller/db.js`) para gerenciar a conexão com o banco de dados. As credenciais sensíveis foram armazenadas em um arquivo `.env` utilizando a biblioteca `dotenv`.
 
 ### 2. **Tratamento de Erros**
+
 **Desafio**: Garantir que erros específicos, como IDs inválidos ou falhas de validação, sejam tratados adequadamente.
 
 **Solução**: Implementação de um middleware de tratamento de erros que verifica o tipo do erro e retorna mensagens personalizadas.
