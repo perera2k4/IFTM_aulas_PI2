@@ -2,7 +2,7 @@ const express = require("express"); // npm install express --save
 const mongoose = require("mongoose"); // npm install mongoose --save
 const dotenv = require("dotenv"); // npm install dotenv --save
 const cors = require("cors"); // npm install cors --save
-const conectaDB = require("./db");
+const conectaDB = require("./controller/db");
 const gamesRouter = require("./routes/games.routes"); // ROTAS DO MÉTODO GET
 
 const port = 3000;

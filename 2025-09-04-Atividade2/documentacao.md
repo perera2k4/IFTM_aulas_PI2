@@ -1,8 +1,11 @@
-# Atividade Avaliativa 02
+# 📝 Atividade Avaliativa 02
 
-## 🎮 API de Games
+**Bruno Pereira Carvalho**
+
+Este repósitorio foi feito para entrega de atividade da disciplina de Programação para Internet 2, nas turmas de 8ºs e 6ºs período de Ciência da Computação, com objetivo de criar uma aplicação node.js que irá executar um servidor backend com integração ao mongodb para que usuários cadastrem, consultem, atualizem e removam informações de jogos, de forma organizada e segura por meio do CRUD.
 
 ## 🔗 Métodos HTTP
+
 <div align="justify">
     
 ![GET](https://img.shields.io/badge/GET-69D695) http://localhost:3000/games, utilizado para buscar todos os elementos do banco de dados pela rota <strong>/games</strong>
@@ -16,88 +19,89 @@
 ![PATCH](https://img.shields.io/badge/PATCH-BBA3DB) http://localhost:3000/games/id, utilizado para editar um elemento ao banco de dados pela rota <strong>/games</strong>
 
 ![DELETE](https://img.shields.io/badge/DELETE-D7887E) http://localhost:3000/games/id, utilizado para deletar um elemento ao banco de dados pela rota <strong>/games</strong>
+
 </div>
 
-## 📌 Contexto
+## 🤔 Como executar?
 
-Você foi contratado para desenvolver uma **API REST** para gerenciar uma coleção de **games**.
-O sistema deverá permitir que usuários cadastrem, consultem, atualizem e removam informações de jogos, de forma organizada e segura.
+1. **Clone o repositório**:
 
----
+```bash
+git clone https://github.com/perera2k4/IFTM_aulas_PI2.git
+cd IFTM_aulas_PI2
+cd 2025-09-04-Atividade2
+```
 
-## 📚 Requisitos da Atividade
+2. **Instale as dependências e variáveis de ambiente**:
 
-### 🔹 Estrutura do Projeto
+```bash
+npm install --save
+echo "MONGODB_URI=" >> .env; echo "USER=" >> .env; echo "PASS=" >> .env
+```
 
-- Criar uma aplicação **Node.js** utilizando o **Express.js**.
-- Usar variáveis de ambiente com o pacote **dotenv**.
-- Conectar a aplicação ao banco de dados **MongoDB Atlas**.
-- Estruturar o projeto em pastas (ex.: `models`, `controllers`, `routes`, etc).
+3. **Crie um projeto e cluster na plataforma [Atlas](https://cloud.mongodb.com/)**: <u>Adicione os acessos</u>
 
-### 🔹 Banco de Dados
+```bash
+MONGODB_URI="SEU_URI_DE_ACESSO"
+USER="SEU_USUÁRIO"
+PASS="SUA_SENHA"
+```
 
-- Criar um **Schema simples** para uma coleção de **games**, com pelo menos os seguintes campos:
+4. **Inicie o servidor**:
 
-  - `titulo` (string, obrigatório)
-  - `genero` (string, obrigatório)
-  - `plataforma` (string, obrigatório)
-  - `lancamento` (número, obrigatório)
+```bash
+node index.js
+```
 
-### 🔹 Funcionalidades (CRUD)
+5. **Acesse o POSTMAN**:
+   Teste as rotas mencionadas em <u>🔗 Métodos HTTP</u>
 
-A API deve permitir:
+## 💾 Estrutura e descrição
 
-1. **Criar** um novo game.
-2. **Listar** todos os games cadastrados.
-3. **Buscar** um game pelo seu ID.
-4. **Atualizar** as informações de um game existente.
-5. **Deletar** um game pelo ID.
+```
+2025-09-04-Atividade2/
+├── controllers/            # Diretório de arquivos de controle
+│   └── db.js               # Componente de configuração para conexão com o banco de dados
+├── models/                 # Diretório com o(s) modelo(s) do banco de dados
+│   └── Game.js             # Schema para o MongoDB
+├── node_modules/           # Diretório de dependências
+├── routes/                 # Diretório com a(s) rota(s) da aplicação
+│   └── games.routes.js     # Componete responsável pela construção de regras do CRUD
+├── .env                    # Arquivo de variáveis do ambiente de desenvolvimento
+├── .env.example            # Arquivo de variáveis do ambiente de desenvolvimento sem exposição da credencial real
+├── .gitignore              # Lista de arquivos e diretórios a serem ignorados pelo Git
+├── README.md               # Documentação
+├── index.js                # Arquivo principal para iniciar a aplicação
+├── package-lock.json       # Mantém o controle das dependências e suas versões
+└── package.json            # Contém metadados do projeto e as dependências
+```
 
-### 🔹 Middlewares
+## 🤖 Middlewares Criados
 
-- Utilizar **middlewares globais** (ex.: `express.json()`, `cors`).
-- Implementar **middleware de erro centralizado** para tratar erros de:
+### 1. **Middleware de Configuração**
+**`app.use(express.json())`**: é responsável por habilitar o parsing de JSON no corpo das requisições. Ele permite que a aplicação interprete e manipule dados enviados no formato JSON.
 
-  - Validação de dados.
-  - IDs inválidos.
-  - Erros internos do servidor.
+### 2. **Middleware de Rotas**
+**`app.use("/games", gamesRouter)`**: define o prefixo `/games` para todas as rotas relacionadas a jogos. As rotas específicas são gerenciadas no arquivo `games.routes.js`.
 
-- (Opcional para bônus) Criar um middleware específico para registrar (fazer um log) cada requisição recebida.
+### 3. **Middleware de Tratamento de Erros**
+**`app.use((err, req, res, next) => { ... })`**: captura e trata erros que ocorrem na aplicação e inclui:
+  - **Erro de Cast (`CastError`)**: Retorna um status `400` com a mensagem "ID inválido".
+  - **Erro de Validação (`ValidationError`)**: Retorna um status `400` com detalhes sobre a falha de validação.
+  - **Erro Interno do Servidor**: Retorna um status `500` com uma mensagem genérica de erro.
 
----
+## 🚫 Desafios
 
-## 📌 Entregáveis
+### 1. **Conexão com o MongoDB**
+**Desafio**: Configurar a conexão com o MongoDB de forma segura e reutilizável.
 
-1. **Repositório no GitHub** com:
+**Solução**: Foi criado um arquivo separado (`controller/db.js`) para gerenciar a conexão com o banco de dados. As credenciais sensíveis foram armazenadas em um arquivo `.env` utilizando a biblioteca `dotenv`.
 
-   - Código completo da aplicação.
-   - Arquivo `.env.example` (com placeholders, sem expor credenciais reais).
+### 2. **Tratamento de Erros**
+**Desafio**: Garantir que erros específicos, como IDs inválidos ou falhas de validação, sejam tratados adequadamente.
 
-2. **API funcional**, com as rotas testadas (POSTMAN).
+**Solução**: Implementação de um middleware de tratamento de erros que verifica o tipo do erro e retorna mensagens personalizadas.
 
-   - Print ou exportação das requisições utilizadas nos testes.
+## 📸 Prints
 
-3. **Readme.md** deve conter:
-
-   - Descrição das funcionalidades implementadas.
-   - Explicação dos middlewares criados.
-   - Desafios encontrados e como foram resolvidos.
-   - Instruções claras no `README.md` para rodar o projeto.
-
----
-
-## 🎯 Critérios de Avaliação
-
-- Funcionamento correto do CRUD.
-- Conexão com MongoDB Atlas e uso de `.env`.
-- Organização do código em pastas (boa arquitetura).
-- Implementação correta dos middlewares.
-- Clareza do `README.md`.
-
----
-
-## 📌 Guia passo-a-passo
-
-- Caso julgue necessário, preparei um [guia passo-a-passo](GUIA.md) para lhe auxiliar no desenvolvimento dessa atividade.
-
----
+VOU FAZER DEPOIS
