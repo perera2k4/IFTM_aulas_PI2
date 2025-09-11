@@ -2,7 +2,7 @@
 
 **Bruno Pereira Carvalho**
 
-Este repósitorio foi feito para entrega de atividade da disciplina de Programação para Internet 2, nas turmas de 8ºs e 6ºs períodos de Ciência da Computação, com objetivo de criar uma aplicação node.js que irá executar um servidor backend com integração ao mongodb para que usuários cadastrem, consultem, atualizem e removam informações de jogos, de forma organizada e segura por meio do CRUD.
+Este repósitorio foi feito para entrega de [atividade da disciplina de Programação para Internet 2](https://github.com/andreluizfrancabatista/aula_04_pi2_2025), nas turmas de 8ºs e 6ºs períodos de Ciência da Computação, com objetivo de criar uma aplicação node.js que irá executar um servidor backend com integração ao mongodb para que usuários cadastrem, consultem, atualizem e removam informações de jogos, de forma organizada e segura por meio do CRUD.
 
 ## 🔗 Métodos HTTP
 
