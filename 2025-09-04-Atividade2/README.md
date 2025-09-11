@@ -110,4 +110,42 @@ node index.js
 
 ## 📸 Prints
 
-VOU FAZER DEPOIS
+1. **Inicialização do servidor**:
+<div align="center">
+   <img src="./images_README/inicializacao-do-servidor.png" target="_blank" alt="Deploy do servidor"/>
+</div>
+
+2. **Método ![GET](https://img.shields.io/badge/GET-69D695)**:
+<div align="center">
+   <img src="./images_README/get.png" target="_blank" alt="Método GET"/>
+</div>
+
+3. **Método ![GET](https://img.shields.io/badge/GET-69D695) by id**:
+<div align="center">
+   <img src="./images_README/get-by-id.png" target="_blank" alt="Método GET by id"/>
+</div>
+
+4. **Método ![POST](https://img.shields.io/badge/POST-D3BE6F)**:
+<div align="center">
+   <img src="./images_README/post.png" target="_blank" alt="Método POST"/>
+</div>
+
+5. **Método ![PUT](https://img.shields.io/badge/PUT-71A9ED)**:
+<div align="center">
+   <img src="./images_README/put.png" target="_blank" alt="Método PUT"/>
+</div>
+
+6. **Método ![PATCH](https://img.shields.io/badge/PATCH-BBA3DB)**:
+<div align="center">
+   <img src="./images_README/patch.png" target="_blank" alt="Método PATCH"/>
+</div>
+
+7. **Método ![DELETE](https://img.shields.io/badge/DELETE-D7887E)**:
+<div align="center">
+   <img src="./images_README/delete.png" target="_blank" alt="Método DELETE"/>
+</div>
+
+8. **Dados no ![MongoDB](https://img.shields.io/badge/MongoDB-00684A)**:
+<div align="center">
+   <img src="./images_README/mongo.png" target="_blank" alt="Método DELETE"/>
+</div>
